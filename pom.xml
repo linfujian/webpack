@@ -1,0 +1,60 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.cloudhealth.view</groupId>
+  <artifactId>webpack</artifactId>
+  <packaging>war</packaging>
+  <version>0.0.1-SNAPSHOT</version>
+  <name>webpack Maven Webapp</name>
+  <url>http://maven.apache.org</url>
+  <dependencies>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>3.8.1</version>
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
+  <build>
+    <finalName>webpack</finalName>
+        <!-- webpack -->
+    <plugins>
+    	<plugin>
+    		<groupId>com.github.eirslett</groupId>
+    		<artifactId>frontend-maven-plugin</artifactId>
+    		<version>1.2</version>
+    		<configuration>
+    			<installDirectory>target</installDirectory>
+    			<workingDirectory>src/main/webapp/resources/workingdir</workingDirectory>
+    		</configuration>
+    		<executions>
+    			<execution>
+    				<id>install node and npm</id>
+    				<goals>
+    					<goal>install-node-and-npm</goal>
+    				</goals>
+    				<configuration>
+    					<nodeVersion>v4.4.5</nodeVersion>
+    					<npmVersion>3.9.2</npmVersion>
+    				</configuration>
+    			</execution>
+    			<execution>
+    				<id>npm install</id>
+    				<goals>
+    					<goal>npm</goal>
+    				</goals>
+    				<configuration>
+    					<arguments>install</arguments>
+    				</configuration>
+    			</execution>
+    			<execution>
+    				<id>webpack build</id>
+    				<goals>
+    					<goal>webpack</goal>
+    				</goals>
+    			</execution>
+    		</executions>
+    	</plugin>
+    </plugins>
+  </build>
+</project>
